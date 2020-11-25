@@ -1,0 +1,4 @@
+# intellij configs
+.idea/
+# JupyterCheckpoints
+.ipynb_checkpoints/
