@@ -1,11 +1,24 @@
-
-.toggle{
+.toggleON{
     background-color:lightgreen;
     border: none;
     padding: 0px 0px;
-    margin: 0px;
+}
+.toggleOFF{
+    background-color:lightcoral;
+    border: none;
+    padding: 0px 0px;
 }
 img{
     width: 50px;
     height: 50px;
+    
+}
+#row1{
+    margin:auto;
+}
+#buttons{
+    margin:auto;
+}
+img{
+
 }
