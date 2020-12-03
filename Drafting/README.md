@@ -13,7 +13,7 @@ This is where we hope to show the development of our project, showing our proces
 - (kinda) neatly organizes the data to make it readable  
   
 ### 12/2/2020  
-![dec2nd progress](Sketches/12-2.PNG)
+![dec2nd progress](Sketches/12-2.gif)
 - added month data to buttons
 - keeps track of how many fish are missing from each month
 - added hemisphere toggle
