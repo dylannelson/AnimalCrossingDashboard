@@ -8,6 +8,12 @@ This is where we hope to show the development of our project, showing our proces
   
 ### 12/1/2020  
 ![dec1st progress](Sketches/12-1.PNG)
-- added data to buttons
+- added names to buttons
 - made collections to store the data
-- (kinda) neatly organizes the data to make it readable
+- (kinda) neatly organizes the data to make it readable  
+  
+### 12/2/2020  
+![dec2nd progress](Sketches/12-2.PNG)
+- added month data to buttons
+- keeps track of how many fish are missing from each month
+- added hemisphere toggle

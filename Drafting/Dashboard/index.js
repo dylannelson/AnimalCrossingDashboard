@@ -2,6 +2,8 @@ var num_toggled = 0;
 var all_keys;
 var current_toggled = new Set([])
 var names_of_fish = ""
+var zone = 'northern'
+var months_array = [0,0,0,0,0,0,0,0,0,0,0,0]
 
 
 //Useful links:
@@ -42,21 +44,47 @@ function toggleButton(givenCreature){
         givenCreature.className = 'toggleOFF';
         num_toggled += 1;
         current_toggled.add(fish_name);
+        // adding to months total
+        var curr_months = data[fish_name]["months"][zone]
+        for (const i in curr_months){
+            months_array[curr_months[i]-1] += 1;
+        }
     }
     else{
         givenCreature.className = 'toggleON';
         num_toggled -= 1;
         current_toggled.delete(fish_name);
+        // removing from months total
+        var curr_months = data[fish_name]["months"][zone]
+        for (const i in curr_months){
+            months_array[curr_months[i]-1] -= 1;
+        }
     }
-    document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
-    
+
+    // DISPLAY PURPOSES --------------------------------------------------------------------------
     // making a string of all fish names
     var curr_names = Array.from(current_toggled)
     names_of_fish = ''
     for (i = 0; i < current_toggled.size; i++){
         names_of_fish += curr_names[i] + ', ';
     }
-    names_of_fish = names_of_fish.slice(0, -2)
+    names_of_fish = names_of_fish.slice(0, -2).replace(/\_/g, " ");
 
     document.getElementById('name_toggled').innerHTML = `Names of Missing Fish: ${names_of_fish}`;
+    document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
+    document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
+
+}
+
+// DOESN'T FIX ANY ALEADRY ADDED FISH DATA, START NEW TO FIX
+function change_hemisphere(){
+    if (zone == "northern"){
+        document.getElementById('hemisphere').innerHTML = "Hemisphere: Southern";
+        zone = 'southern'
+        
+    }
+    else{
+        document.getElementById('hemisphere').innerHTML = "Hemisphere: Northern";
+        zone = 'northern'
+    }
 }
