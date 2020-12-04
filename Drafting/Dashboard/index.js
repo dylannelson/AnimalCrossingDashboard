@@ -78,13 +78,31 @@ function toggleButton(givenCreature){
 
 // DOESN'T FIX ANY ALEADRY ADDED FISH DATA, START NEW TO FIX
 function change_hemisphere(){
+    clear_grid();
     if (zone == "northern"){
         document.getElementById('hemisphere').innerHTML = "Hemisphere: Southern";
         zone = 'southern'
-        
+        // change class/color
+        var gridButtons = document.querySelectorAll(".gridButton");
+        for (var i=0; i< gridButtons.length; i++){
+            gridButtons[i].className = "gridButton south";
+        }
     }
     else{
         document.getElementById('hemisphere').innerHTML = "Hemisphere: Northern";
         zone = 'northern'
+        // change class/color
+        var gridButtons = document.querySelectorAll(".gridButton");
+        for (var i=0; i< gridButtons.length; i++){
+            gridButtons[i].className = "gridButton north";
+        }
+    }
+}
+
+function clear_grid(){
+    var curr_off = document.getElementsByClassName("toggleOFF");
+    var curr_len = curr_off.length;
+    for (var i =0; i < curr_len; i++){
+        toggleButton(curr_off[0]);
     }
 }

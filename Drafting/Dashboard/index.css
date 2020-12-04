@@ -1,3 +1,10 @@
+body{
+    background-color: #a6def5;
+}
+#title{
+    text-align: center;
+}
+h1,h3{font-family: Arial, Helvetica, sans-serif;}
 .toggleON{
     background-color:lightgreen;
     border: none;
@@ -18,21 +25,26 @@ img{
 }
 #buttons{
     margin: auto;
-    width: 90%;
+    width: 95%;
     border: 3px solid black;
+    border-radius: 25px;
     padding: 10px;
-    background-color:black;
+    background-color:#51c4f1;
 }
-#hemisphere{
-    display:grid;
-    margin: auto;
-    background-color: #AEC6CF;
+#gridButtons{
+    text-align: center;
+}
+.gridButton{
     border: none;
     color: #000000;
     padding: 15px 32px;
     text-align: center;
     text-decoration: none;
-    font-size: 16px;
+    font-size: 18px;
     margin-top: 5px;
+    border-radius: 10px;
+    
 }
+.north{background-color: #AEC6CF;}
+.south{background-color: #d8d6be;}
 

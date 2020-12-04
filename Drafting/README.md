@@ -16,4 +16,10 @@ This is where we hope to show the development of our project, showing our proces
 ![dec2nd progress](Sketches/12-2.gif)
 - added month data to buttons
 - keeps track of how many fish are missing from each month
-- added hemisphere toggle
+- added hemisphere toggle  
+  
+### 12/3/2020  
+![dec3rd progress](Sketches/12-3.gif)
+- added a clear grid button
+- fixed issue when having inputs selected and then changing hemisphere
+- made it less hideous for the time being
