@@ -61,6 +61,8 @@ function toggleButton(givenCreature){
         }
     }
 
+    drawMonthsBar();
+
     // DISPLAY PURPOSES --------------------------------------------------------------------------
     // making a string of all fish names
     var curr_names = Array.from(current_toggled)
@@ -74,6 +76,43 @@ function toggleButton(givenCreature){
     document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
     document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
 
+}
+
+function drawMonthsBar() {
+    Highcharts.chart('months-bar-chart', {
+        chart: {
+            type: 'column'
+        },
+        title: {
+            text: 'Best Months to Catch Fish'
+        },
+        xAxis: {
+            categories: [
+                'Jan',
+                'Feb',
+                'Mar',
+                'Apr',
+                'May',
+                'Jun',
+                'Jul',
+                'Aug',
+                'Sep',
+                'Oct',
+                'Nov',
+                'Dec'
+            ],
+            crosshair: true
+        },
+        yAxis: {
+            title: {
+                text: '# Uncaught Fish'
+            }
+        },
+        series: [{
+            name: 'Uncaught Fish',
+            data: months_array
+        }]
+    });
 }
 
 // DOESN'T FIX ANY ALEADRY ADDED FISH DATA, START NEW TO FIX
