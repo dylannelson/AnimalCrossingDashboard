@@ -79,6 +79,8 @@ function toggleButton(givenCreature){
 }
 
 function drawMonthsBar() {
+    // Consider adding which fish to catch during each month (or separate chart)
+    // Coloring for seasons https://stackoverflow.com/questions/7737409/set-different-colors-for-each-column-in-highcharts
     Highcharts.chart('months-bar-chart', {
         chart: {
             type: 'column'
@@ -108,8 +110,27 @@ function drawMonthsBar() {
                 text: '# Uncaught Fish'
             }
         },
+        plotOptions: {
+            column: {
+                colorByPoint: true
+            }
+        },
+        colors: [
+            '#0000ff',
+            '#0000ff',
+            '#ff0000',
+            '#ff0000',
+            '#ff0000',
+            '#00ff00',
+            '#00ff00',
+            '#00ff00',
+            '#03c6fc',
+            '#03c6fc',
+            '#03c6fc',
+            '#0000ff',
+        ],
         series: [{
-            name: 'Uncaught Fish',
+            name: 'Fish not Caught',
             data: months_array
         }]
     });
