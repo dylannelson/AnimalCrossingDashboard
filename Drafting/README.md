@@ -22,4 +22,9 @@ This is where we hope to show the development of our project, showing our proces
 ![dec3rd progress](Sketches/12-3.gif)
 - added a clear grid button
 - fixed issue when having inputs selected and then changing hemisphere
-- made it less hideous for the time being
+- made it less hideous for the time being  
+  
+### 12/10/2020  
+![dec10th progress](Sketches/12-10.PNG)
+- added first graph, with colors for season
+- added second data pipeline for fish location 

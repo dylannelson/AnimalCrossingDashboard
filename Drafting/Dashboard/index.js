@@ -4,6 +4,18 @@ var current_toggled = new Set([])
 var names_of_fish = ""
 var zone = 'northern'
 var months_array = [0,0,0,0,0,0,0,0,0,0,0,0]
+var unique_locations = {"River":0,
+                        "Pond":0,
+                        "River (Clifftop)":0,
+                        "River (Mouth)":0,
+                        "Sea":0,
+                        "Pier":0}
+
+// seasonal colors
+winter_color = '#4995C2'
+spring_color = '#74AF6E'
+summer_color = '#DD7A7A'
+fall_color = '#A58257'
 
 
 //Useful links:
@@ -49,6 +61,8 @@ function toggleButton(givenCreature){
         for (const i in curr_months){
             months_array[curr_months[i]-1] += 1;
         }
+        // updating location dict
+        unique_locations[data[fish_name]["location"]] += 1;
     }
     else{
         givenCreature.className = 'toggleON';
@@ -59,7 +73,10 @@ function toggleButton(givenCreature){
         for (const i in curr_months){
             months_array[curr_months[i]-1] -= 1;
         }
+        // updating location dict
+        unique_locations[data[fish_name]["location"]] -= 1;
     }
+    
 
     drawMonthsBar();
 
@@ -75,6 +92,7 @@ function toggleButton(givenCreature){
     document.getElementById('name_toggled').innerHTML = `Names of Missing Fish: ${names_of_fish}`;
     document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
     document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
+    document.getElementById('fish_locations').innerHTML = `Fish per Location:  ${Object.values(unique_locations)}`;
 
 }
 
@@ -89,19 +107,8 @@ function drawMonthsBar() {
             text: 'Best Months to Catch Fish'
         },
         xAxis: {
-            categories: [
-                'Jan',
-                'Feb',
-                'Mar',
-                'Apr',
-                'May',
-                'Jun',
-                'Jul',
-                'Aug',
-                'Sep',
-                'Oct',
-                'Nov',
-                'Dec'
+            categories: ['Jan','Feb','Mar','Apr','May',
+                'Jun','Jul','Aug','Sep','Oct','Nov','Dec'
             ],
             crosshair: true
         },
@@ -113,21 +120,15 @@ function drawMonthsBar() {
         plotOptions: {
             column: {
                 colorByPoint: true
+            },
+            series: {
+                pointPadding: 0
             }
         },
-        colors: [
-            '#0000ff',
-            '#0000ff',
-            '#ff0000',
-            '#ff0000',
-            '#ff0000',
-            '#00ff00',
-            '#00ff00',
-            '#00ff00',
-            '#03c6fc',
-            '#03c6fc',
-            '#03c6fc',
-            '#0000ff',
+        colors: [winter_color,winter_color,spring_color,
+            spring_color,spring_color,summer_color,
+            summer_color,summer_color,fall_color,
+            fall_color,fall_color,winter_color,
         ],
         series: [{
             name: 'Fish not Caught',

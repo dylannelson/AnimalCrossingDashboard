@@ -985,7 +985,7 @@ data = {
         "icon_url": "https://vignette.wikia.nocookie.net/animalcrossing/images/1/15/NH-Icon-char.png/revision/latest?cb=20200401003129",
         "image_url": "https://acnhapi.com/v1/images/fish/28",
         "price": 3800,
-        "location": "River (Clifftop)  Pond",
+        "location": "River (Clifftop)",
         "shadow_size": "3",
         "time": [
             "4 PM - 9 AM"
