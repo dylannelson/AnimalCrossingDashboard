@@ -44,7 +44,7 @@ img{
 }
 .north{background-color: #AEC6CF;}
 .south{background-color: #d8d6be;}
-#months-bar-chart{
+.chart {
     width: 40%;
 }
 .row {

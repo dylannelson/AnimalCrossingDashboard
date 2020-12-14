@@ -4,12 +4,14 @@ var current_toggled = new Set([])
 var names_of_fish = ""
 var zone = 'northern'
 var months_array = [0,0,0,0,0,0,0,0,0,0,0,0]
+var missingFish = {}
 var unique_locations = {"River":0,
                         "Pond":0,
                         "River (Clifftop)":0,
                         "River (Mouth)":0,
                         "Sea":0,
                         "Pier":0}
+var availabilityData = [];
 
 // seasonal colors
 winter_color = '#4995C2'
@@ -57,12 +59,13 @@ function toggleButton(givenCreature){
         num_toggled += 1;
         current_toggled.add(fish_name);
         // adding to months total
-        var curr_months = data[fish_name]["months"][zone]
+        var curr_months = data[fish_name]["months"][zone];
         for (const i in curr_months){
             months_array[curr_months[i]-1] += 1;
         }
         // updating location dict
         unique_locations[data[fish_name]["location"]] += 1;
+        missingFish[fish_name] = fish_id;
     }
     else{
         givenCreature.className = 'toggleON';
@@ -75,10 +78,14 @@ function toggleButton(givenCreature){
         }
         // updating location dict
         unique_locations[data[fish_name]["location"]] -= 1;
+
+        delete missingFish[fish_name];
     }
     
 
     drawMonthsBar();
+    drawMonthAvailabilityChart();
+
 
     // DISPLAY PURPOSES --------------------------------------------------------------------------
     // making a string of all fish names
@@ -108,8 +115,7 @@ function drawMonthsBar() {
         },
         xAxis: {
             categories: ['Jan','Feb','Mar','Apr','May',
-                'Jun','Jul','Aug','Sep','Oct','Nov','Dec'
-            ],
+                'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
             crosshair: true
         },
         yAxis: {
@@ -135,6 +141,58 @@ function drawMonthsBar() {
             data: months_array
         }]
     });
+}
+
+function drawMonthAvailabilityChart() {
+    // TODO: resize chart for consistent cell size, order fish in certain way (currently by order added in picker), show icons
+    let availabilityData = [];
+    let numMissing = Object.keys(missingFish).length;
+    for (let i = 0; i < numMissing; i++) {
+        for (let j = 0; j < 12; j++) {
+            availabilityData.push([j, i, 0])
+        }
+    }
+
+    for (let i = 0; i < numMissing; i++) {
+        // get data from json, draw bars
+        let fishName = Object.keys(missingFish)[i];
+        for (let month of data[fishName]['months'][zone]) {
+            availabilityData[12 * i + month - 1] = [month - 1, i, i+1]
+        }
+    }
+    monthAvailabilityChart = Highcharts.chart('month-availability-chart', {
+        chart: {
+            type: 'heatmap',
+            marginTop: 40,
+            marginBottom: 80,
+            plotBorderWidth: 1
+        },
+        title: {
+            text: 'Fish Availability by Month'
+        },
+        xAxis: {
+            categories: ['Jan','Feb','Mar','Apr','May',
+            'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+        },
+        yAxis: {
+            categories: Object.keys(missingFish),
+            labels: { // see style option
+                formatter: function() { 
+                    return `<img src=${data[this.value]['icon_url']} alt="" style="vertical-align: middle; width: 32px; height: 32px"/>`
+                    + this.value.split('_').map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).join(' ')
+                },
+                useHTML: true
+            }
+        },
+        colorAxis: {
+            min: 0,
+            minColor: '#FFFFFF',
+            maxColor: '#003694'
+        },
+        series: [{
+            data: availabilityData
+        }]
+    })
 }
 
 // DOESN'T FIX ANY ALEADRY ADDED FISH DATA, START NEW TO FIX
