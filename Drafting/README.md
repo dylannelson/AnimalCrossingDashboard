@@ -30,7 +30,7 @@ This is where we hope to show the development of our project, showing our proces
 - added second data pipeline for fish location 
 
 ### 12/13/2020
-![dec13th progress](Sketches/12-13.PNG)
+![dec13th progress](Sketches/12-13.png)
 - created timeline chart of fish availability by month
   - Has icons
   - in order of last selected in fish grid interface
