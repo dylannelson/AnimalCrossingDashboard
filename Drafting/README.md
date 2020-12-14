@@ -28,3 +28,10 @@ This is where we hope to show the development of our project, showing our proces
 ![dec10th progress](Sketches/12-10.PNG)
 - added first graph, with colors for season
 - added second data pipeline for fish location 
+
+### 12/13/2020
+![dec13th progress](Sketches/12-13.PNG)
+- created timeline chart of fish availability by month
+  - Has icons
+  - in order of last selected in fish grid interface
+  - Colors decrease from top to bottom representing last selected
