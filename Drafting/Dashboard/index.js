@@ -83,8 +83,10 @@ function toggleButton(givenCreature){
     }
     
 
-    drawLocationChart();
+    
+    drawPieChart();
     drawMonthsBar();
+    drawLocationChart();
     drawMonthAvailabilityChart();
 
 
@@ -140,6 +142,26 @@ function drawMonthsBar() {
         series: [{
             name: 'Fish not Caught',
             data: months_array
+        }]
+    });
+}
+
+function drawPieChart() {
+    let seasonalData = [{name: 'Winter', y: months_array[0] + months_array[1] + months_array[11], color: winter_color}, 
+        {name: 'Spring', y: months_array[2] + months_array[3] + months_array[4], color: spring_color}, 
+        {name: 'Summer', y: months_array[5] + months_array[6] + months_array[7], color: summer_color},
+        {name: 'Fall', y: months_array[8] + months_array[9] + months_array[10], color: fall_color}];
+        
+    seasonalPieChart = Highcharts.chart('seasonal-pie-chart', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Fish by Season'
+        },
+        series: [{
+            name: "Uncaught Fish",
+            data: seasonalData
         }]
     });
 }
