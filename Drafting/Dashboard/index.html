@@ -7,6 +7,7 @@
         <script src="index.js"></script>
         <script src="https://code.highcharts.com/highcharts.js"></script>
         <script src="https://code.highcharts.com/modules/heatmap.js"></script>
+        <script src="https://code.highcharts.com/modules/heatmap.js"></script>
     </head>
     <body>
         <main>
@@ -36,8 +37,12 @@
             <h3 id ='fish_locations'>Fish per Location: </h3>
             <br><hr>
             <!-- Add flexbox/grid CSS? + background similar to figma-->
-            <section class="chart-section"></section><div id="months-bar-chart" class="chart"></div></section>
-            <section class="chart-section"></section><div id="month-availability-chart" class="chart"></div></section>
+            <div id = allCharts>
+                <div id="months-bar-chart" class="chart_div"></div>
+                <div id="month-availability-chart" class="chart_div"></div>
+                <div id="location-chart" class="chart_div"></div>
+            </div>
+            
         </main>
     </body>
 </html>

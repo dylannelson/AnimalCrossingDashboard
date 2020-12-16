@@ -22,7 +22,7 @@ img{
 }
 #buttons{
     margin: auto;
-    width: 95%;
+    width: 85%;
     border: none;
     border-radius: 25px;
     padding: 20px;
@@ -44,14 +44,27 @@ img{
 }
 .north{background-color: #AEC6CF;}
 .south{background-color: #d8d6be;}
-.chart {
-    width: 40%;
+.chart_div {
+    width:45%;
+    text-align: center;
+    display:inline-block;
+    margin: 0 auto;
+    
 }
 .row {
     display: flex;
     align-items: center;
     justify-content: center;
 }
+#allCharts{
+    text-align: center;
+}
+/* .chart_section{
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+} */
+
 /* .row{
     text-align: center;
     display: block;
