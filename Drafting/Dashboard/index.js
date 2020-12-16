@@ -65,7 +65,7 @@ function toggleButton(givenCreature){
         }
         // updating location dict
         unique_locations[data[fish_name]["location"]] += 1;
-        missingFish[fish_name] = fish_id;
+        missingFish[fish_name] = data[fish_name];
     }
     else{
         givenCreature.className = 'toggleON';
@@ -83,6 +83,7 @@ function toggleButton(givenCreature){
     }
     
 
+    drawLocationChart();
     drawMonthsBar();
     drawMonthAvailabilityChart();
 
@@ -152,7 +153,6 @@ function drawMonthAvailabilityChart() {
             availabilityData.push([j, i, 0])
         }
     }
-
     for (let i = 0; i < numMissing; i++) {
         // get data from json, draw bars
         let fishName = Object.keys(missingFish)[i];
@@ -173,13 +173,16 @@ function drawMonthAvailabilityChart() {
         xAxis: {
             categories: ['Jan','Feb','Mar','Apr','May',
             'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
-        },
+            crosshair: {
+                color: 'black'
+            }
+        }, // consider crosshair
         yAxis: {
             categories: Object.keys(missingFish),
             labels: { // see style option
                 formatter: function() { 
-                    return `<img src=${data[this.value]['icon_url']} alt="" style="vertical-align: middle; width: 32px; height: 32px"/>`
-                    + this.value.split('_').map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).join(' ')
+                    return this.value.split('_').map(w => w[0].toUpperCase() + w.substr(1).toLowerCase()).join(' ') + ' ' 
+                    + `<img src=${data[this.value]['icon_url']} alt="" style="vertical-align: middle; width: 32px; height: 32px"/>`;
                 },
                 useHTML: true
             }
@@ -190,9 +193,74 @@ function drawMonthAvailabilityChart() {
             maxColor: '#003694'
         },
         series: [{
-            data: availabilityData
+            data: availabilityData,
+            states: {
+                hover: {
+                    enabled: false
+                }
+            }
         }]
     })
+}
+
+function drawLocationChart() {
+    let locationData = [];
+    for (let [location, num] of Object.entries(unique_locations)) {
+        locationData.push({id: location, name: location})
+    }
+    for (let fish of Object.keys(missingFish)) {
+        locationData.push({name: fish, parent: data[fish]['location'], value: 1});
+    }
+    locationChart = Highcharts.chart('location-chart', {
+        series: [{
+            type: "treemap",
+            layoutAlgorithm: 'stripes',
+            alternateStartingDirection: true,
+            levels: [{
+                level: 1,
+                borderWidth: 1,
+                layoutAlgorithm: 'stripes',
+                dataLabels: {
+                    enabled: true,
+                    align: 'left',
+                    verticalAlign: 'top',
+                    style: {
+                        fontSize: '15px',
+                        fontWeight: 'bold'
+                    }
+                }// layoutStartingDirection: 
+            }, {
+                level: 2,
+                borderWidth: 0,
+                layoutAlgorithm: 'stripes',
+                dataLabels: {
+                    formatter: function() {
+                        return `<img src=${data[this.key]['icon_url']} alt="" style="vertical-align: middle; width: 32px; height: 32px"/>`;
+                    },
+                    useHTML: true,
+                    enabled: true,
+                    align: 'center',
+                    verticalAlign: 'middle',
+                    style: {
+                        fontSize: '15px',
+                        fontWeight: 'bold'
+                    }
+                } 
+            }],
+            data: locationData,
+        }],
+        title: {
+            text: 'Where to Catch Fish'
+        },
+        tooltip: {
+            formatter: function() {
+                return `<b>name:</b> ${missingFish[this.key]['name']}
+                \n<b>price:</b> ${missingFish[this.key]['price']}
+                \n<b>shadow size:</b> ${missingFish[this.key]['shadow_size']}`;
+            },
+            useHTML: true
+        }
+    });
 }
 
 // DOESN'T FIX ANY ALEADRY ADDED FISH DATA, START NEW TO FIX
