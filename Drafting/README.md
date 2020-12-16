@@ -43,3 +43,14 @@ This is where we hope to show the development of our project, showing our proces
   - in order of last selected in fish grid interface
   - Colors decrease from top to bottom representing last selected 
 
+### 12/14/2020
+![dec14th progress](Sketches/12-14.PNG)
+- designed and completed treemap
+- shows different regions the remaining fish are in
+- detailed tool tip with lots of the remaining data we haven't used
+  
+### 12/15/2020
+![dec15th progress](Sketches/12-15.png)
+- simplest of the graphs, season data
+- reworked graph order, so it compliments the bar chart better (both show more month based events)
+

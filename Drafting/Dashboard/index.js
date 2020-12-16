@@ -131,6 +131,9 @@ function drawMonthsBar() {
                 text: '# Uncaught Fish'
             }
         },
+        legend: {
+            enabled: false
+        },
         plotOptions: {
             column: {
                 colorByPoint: true
