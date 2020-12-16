@@ -3,14 +3,16 @@ var all_keys;
 var current_toggled = new Set([])
 var names_of_fish = ""
 var zone = 'northern'
-var months_array = [0,0,0,0,0,0,0,0,0,0,0,0]
-var missingFish = {}
+var months_array = [0,0,0,0,0,0,0,0,0,0,0,0];
+var months = ['Jan','Feb','Mar','Apr','May',
+'Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+var missingFish = {};
 var unique_locations = {"River":0,
                         "Pond":0,
                         "River (Clifftop)":0,
                         "River (Mouth)":0,
                         "Sea":0,
-                        "Pier":0}
+                        "Pier":0};
 var availabilityData = [];
 
 // seasonal colors
@@ -83,8 +85,10 @@ function toggleButton(givenCreature){
     }
     
 
-    drawLocationChart();
+    
+    drawPieChart();
     drawMonthsBar();
+    drawLocationChart();
     drawMonthAvailabilityChart();
 
 
@@ -103,9 +107,13 @@ function toggleButton(givenCreature){
     document.getElementById('fish_locations').innerHTML = `Fish per Location:  ${Object.values(unique_locations)}`;
 
 }
-
+// TODO: 
+// All: Good spacing in between sections, good scaling (wide/narrow)
+// Select a fish show attributes
+// Toggle month/time
+// Bar: Consider adding which fish to catch during each month (or separate chart)
+// HeatMap: resize chart/icon for consistent cell/label size, limit # fish shown
 function drawMonthsBar() {
-    // Consider adding which fish to catch during each month (or separate chart)
     // Coloring for seasons https://stackoverflow.com/questions/7737409/set-different-colors-for-each-column-in-highcharts
     Highcharts.chart('months-bar-chart', {
         chart: {
@@ -115,8 +123,7 @@ function drawMonthsBar() {
             text: 'Best Months to Catch Fish'
         },
         xAxis: {
-            categories: ['Jan','Feb','Mar','Apr','May',
-                'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            categories: months,
             crosshair: true
         },
         yAxis: {
@@ -144,8 +151,28 @@ function drawMonthsBar() {
     });
 }
 
+function drawPieChart() {
+    let seasonalData = [{name: 'Winter', y: months_array[0] + months_array[1] + months_array[11], color: winter_color}, 
+        {name: 'Spring', y: months_array[2] + months_array[3] + months_array[4], color: spring_color}, 
+        {name: 'Summer', y: months_array[5] + months_array[6] + months_array[7], color: summer_color},
+        {name: 'Fall', y: months_array[8] + months_array[9] + months_array[10], color: fall_color}];
+
+    seasonalPieChart = Highcharts.chart('seasonal-pie-chart', {
+        chart: {
+            type: 'pie'
+        },
+        title: {
+            text: 'Fish by Season'
+        },
+        series: [{
+            name: "Uncaught Fish",
+            data: seasonalData
+        }]
+    });
+}
+
 function drawMonthAvailabilityChart() {
-    // TODO: resize chart for consistent cell size, order fish in certain way (currently by order added in picker), show icons
+    // TODO: 
     let availabilityData = [];
     let numMissing = Object.keys(missingFish).length;
     for (let i = 0; i < numMissing; i++) {
@@ -171,10 +198,11 @@ function drawMonthAvailabilityChart() {
             text: 'Fish Availability by Month'
         },
         xAxis: {
-            categories: ['Jan','Feb','Mar','Apr','May',
-            'Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+            categories: months,
             crosshair: {
-                color: 'black'
+                color:'gray',
+                width: 1,
+                zIndex: 10
             }
         }, // consider crosshair
         yAxis: {
@@ -199,7 +227,13 @@ function drawMonthAvailabilityChart() {
                     enabled: false
                 }
             }
-        }]
+        }],
+        legend: {
+            enabled: false
+        },
+        tooltip: {
+            enabled: false
+        }
     })
 }
 
@@ -258,7 +292,7 @@ function drawLocationChart() {
                 \n<b>price:</b> ${missingFish[this.key]['price']}
                 \n<b>shadow size:</b> ${missingFish[this.key]['shadow_size']}`;
             },
-            useHTML: true
+            useHTML: true // className
         }
     });
 }
