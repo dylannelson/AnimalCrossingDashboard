@@ -50,7 +50,7 @@ This is where we hope to show the development of our project, showing our proces
 - detailed tool tip with lots of the remaining data we haven't used
   
 ### 12/15/2020
-![dec15th progress](Sketches/12-15.png)
+![dec15th progress](Sketches/12-15.PNG)
 - simplest of the graphs, season data
 - reworked graph order, so it compliments the bar chart better (both show more month based events)
 
