@@ -103,8 +103,8 @@ function toggleButton(givenCreature){
 
     document.getElementById('name_toggled').innerHTML = `Names of Missing Fish: ${names_of_fish}`;
     document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
-    document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
-    document.getElementById('fish_locations').innerHTML = `Fish per Location:  ${Object.values(unique_locations)}`;
+    // document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
+    // document.getElementById('fish_locations').innerHTML = `Fish per Location:  ${Object.values(unique_locations)}`;
 
 }
 // TODO: 
