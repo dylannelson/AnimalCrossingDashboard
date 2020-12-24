@@ -53,7 +53,7 @@ function load_images(){
 //Useful Links
 //  self referring onlcick
 //      -https://stackoverflow.com/questions/619514/javascript-how-to-make-a-control-send-itself-in-a-method
-function toggleButton(givenCreature){
+function toggleButton(givenCreature, draw_graphs = true){
     fish_id = Number((givenCreature.id).slice(-2));
     fish_name = all_keys[fish_id-1];
     if (givenCreature.className == 'toggleON'){
@@ -84,27 +84,31 @@ function toggleButton(givenCreature){
         delete missingFish[fish_name];
     }
     
+    // Saves a TON of time and CPU by not drawing graphs when clearing
+    if(draw_graphs){
+        drawPieChart();
+        drawMonthsBar();
+        drawLocationChart();
+        drawMonthAvailabilityChart();
 
-    
-    drawPieChart();
-    drawMonthsBar();
-    drawLocationChart();
-    drawMonthAvailabilityChart();
+        // DISPLAY PURPOSES ------- Can remove if not needed
+        // making a string of all fish names
+        var curr_names = Array.from(current_toggled)
+        names_of_fish = ''
+        for (i = 0; i < current_toggled.size; i++){
+            names_of_fish += curr_names[i] + ', ';
+        }
+        names_of_fish = names_of_fish.slice(0, -2).replace(/\_/g, " ");
 
-
-    // DISPLAY PURPOSES --------------------------------------------------------------------------
-    // making a string of all fish names
-    var curr_names = Array.from(current_toggled)
-    names_of_fish = ''
-    for (i = 0; i < current_toggled.size; i++){
-        names_of_fish += curr_names[i] + ', ';
+        document.getElementById('name_toggled').innerHTML = `Names of Missing Fish: ${names_of_fish}`;
+        document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
+        // document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
+        // document.getElementById('fish_locations').innerHTML = `Fish per Location:  ${Object.values(unique_locations)}`;
     }
-    names_of_fish = names_of_fish.slice(0, -2).replace(/\_/g, " ");
-
-    document.getElementById('name_toggled').innerHTML = `Names of Missing Fish: ${names_of_fish}`;
-    document.getElementById('num_toggled').innerHTML = `Total Missing Fish: ${num_toggled}`;
-    // document.getElementById('months_toggled').innerHTML = `Fish Per Month: ${months_array}`;
-    // document.getElementById('fish_locations').innerHTML = `Fish per Location:  ${Object.values(unique_locations)}`;
+    // hides the empty graphs if they are empty
+    if (current_toggled.size == 0){
+        clear_charts();
+    }
 
 }
 // TODO: 
@@ -162,7 +166,7 @@ function drawPieChart() {
 
     seasonalPieChart = Highcharts.chart('seasonal-pie-chart', {
         chart: {
-            type: 'pie'
+            type: 'pie',
         },
         title: {
             text: 'Fish by Season'
@@ -173,7 +177,7 @@ function drawPieChart() {
         }]
     });
 }
-
+// Bottom Left Chart
 function drawMonthAvailabilityChart() {
     // TODO: 
     let availabilityData = [];
@@ -326,7 +330,19 @@ function change_hemisphere(){
 function clear_grid(){
     var curr_off = document.getElementsByClassName("toggleOFF");
     var curr_len = curr_off.length;
-    for (var i =0; i < curr_len; i++){
+    if (curr_len > 0){
+        for (var i =0; i < curr_len-1; i++){
+            toggleButton(curr_off[0], false);
+        }
         toggleButton(curr_off[0]);
     }
+    clear_charts();
+    
+}
+function clear_charts(){
+    //doesn' allow for empty charts 
+    document.getElementById('months-bar-chart').innerHTML = '';
+    document.getElementById('seasonal-pie-chart').innerHTML = '';
+    document.getElementById('month-availability-chart').innerHTML = '';
+    document.getElementById('location-chart').innerHTML = '';
 }

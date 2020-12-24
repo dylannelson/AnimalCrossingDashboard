@@ -51,6 +51,11 @@ img{
     margin: 0 auto;
     
 }
+.big_graphs{
+    text-align: center;
+    margin: 0 auto;
+    width:90%;
+}
 .row {
     display: flex;
     align-items: center;

@@ -52,5 +52,10 @@ This is where we hope to show the development of our project, showing our proces
 ### 12/15/2020
 ![dec15th progress](Sketches/12-15.PNG)
 - simplest of the graphs, season data
-- reworked graph order, so it compliments the bar chart better (both show more month based events)
+- reworked graph order, so it compliments the bar chart better (both show more month based events)  
+  
+### 12/23/2020
+- made the "clear" button work far more efficiently
+- made two of the graphs on their own line to make them more readable
+- made graphs disappear when they are empty
 
