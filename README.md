@@ -1,6 +1,8 @@
 # AnimalCrossingDashboard
 ## Dynamic Dashboard for Animal Crossing New Horizons
-
+[Updates and Progress](https://github.com/dylannelson/AnimalCrossingDashboard/blob/main/Drafting/README.md)  
+  
+[Working Site Here](https://dylannelson.github.io/AnimalCrossingDashboard/)  
 ### Uses:
 - Tracking the fish you've caught so far, saved locally
 - See what fish you have left to collect
@@ -8,22 +10,26 @@
 
 Updated with data visuals live, based off of your collection.
 
-### Goals:
+### Achieved Goals:
 1. Make a grid for all fish and logos to represent them
 2. Connect the data of each fish to their corresponding grid box
 3. Allow the fish to be toggled on and off and save them locally
-4. Make 5 data viz to help the users collect their remaining fish 
+4. Make 4 data viz to help the users collect their remaining fish 
 more efficiently
-5. Host the site for others to use
-
+5. Host the site for others to use  
+  
+### Current Goals
+1. Make the bottom two graphs able to handle more than 20 data points
+2. Aesthetics, big time 
+3. Info/Help page
+  
 #### Stretch Goals:
 Goals we would like to achieve as a bonus from our original intentions
 1. Integrate bugs, the second most sought afer creature
     - Requires doing all of the work above, but for a new dataset
 2. Add artworks, the third most important
 3. Add critters as well
-4. Add additional info for each creature, like the informational quotes 
-provided ingame
+4. Add additional info for each creature, like the informational quotes provided ingame
 <br><br><br>
 <ins>Credits</ins>
 - [sungyeonu](https://github.com/sungyeonu/animal-crossing-scraper) for 
