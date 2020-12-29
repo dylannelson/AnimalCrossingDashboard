@@ -58,4 +58,13 @@ This is where we hope to show the development of our project, showing our proces
 - made the "clear" button work far more efficiently
 - made two of the graphs on their own line to make them more readable
 - made graphs disappear when they are empty
+  
+### 12/28/2020
+![dec28th progress](Sketches/12-28.PNG)
+- Tried to work on appearance with more appealing color scheme
+- Added basic navbar (not functional yet)
+- Fixed long-time issue with page resizing when graphs added/removed
+	- Was very ugly, and made whole page shift annoyingly
+	- issue was cause by scroll wheel appearing/dissapearing and resizing the page
+	- always having scroll wheel visable fixed this smoothly
 

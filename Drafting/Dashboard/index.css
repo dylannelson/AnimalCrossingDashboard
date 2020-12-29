@@ -1,10 +1,37 @@
 body{
-    background-color: #a6def5;
+    background-color: #d8d8d8;
+    margin: 0;
+    /* VERY Important, always shows scrollbar, so page 
+    doesn't resize when it is added */
+    overflow-y: scroll;
 }
-#title{
+/* ---NAVBAR--- */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+li a {
+    display: block;
+    color: white;
     text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
-h1,h3{font-family: Arial, Helvetica, sans-serif;}
+li a:hover {
+    background-color: #111;
+}
+
+/* ---BODY--- */
+h1,h3,a{font-family: Arial, Helvetica, sans-serif;}
 .toggleON{
     background-color:lightgreen;
     border: none;
@@ -26,7 +53,7 @@ img{
     border: none;
     border-radius: 25px;
     padding: 20px;
-    background-color:#7ebed8;
+    background-color:#333;
 }
 #gridButtons{
     text-align: center;
@@ -42,8 +69,8 @@ img{
     border-radius: 10px;
     
 }
-.north{background-color: #AEC6CF;}
-.south{background-color: #d8d6be;}
+.north{background-color: #dceff7;}
+.south{background-color: #d8cbbe;}
 .chart_div {
     width:45%;
     text-align: center;
@@ -54,7 +81,7 @@ img{
 .big_graphs{
     text-align: center;
     margin: 0 auto;
-    width:90%;
+    width:95%;
 }
 .row {
     display: flex;
@@ -64,6 +91,7 @@ img{
 #allCharts{
     text-align: center;
 }
+
 /* .chart_section{
     text-align: center;
     align-items: center;
