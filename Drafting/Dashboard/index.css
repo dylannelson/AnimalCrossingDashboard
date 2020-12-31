@@ -26,7 +26,7 @@ li a {
     padding: 14px 16px;
     text-decoration: none;
 }
-li a:hover {
+li a:hover, .active{
     background-color: #111;
 }
 
@@ -81,7 +81,7 @@ img{
 .big_graphs{
     text-align: center;
     margin: 0 auto;
-    width:95%;
+    width:90%;
 }
 .row {
     display: flex;

@@ -1,0 +1,40 @@
+body{
+    background-color: #d8d8d8;
+    margin: 0;
+    /* VERY Important, always shows scrollbar, so page 
+    doesn't resize when it is added */
+}
+h1,h3,a,p{font-family: Arial, Helvetica, sans-serif;}
+/* ---NAVBAR--- */
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+.left {
+    float: left;
+}
+.right {
+    float: right;
+}
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+li a:hover, .active {
+    background-color: #111;
+}
+#content{
+    margin: auto;
+    width: 85%;
+}
+img{
+    float:left;
+    padding-right: 20px;
+    padding-bottom: 10px;
+}
