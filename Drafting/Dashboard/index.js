@@ -14,7 +14,7 @@ var unique_locations = {"River":0,
                         "Sea":0,
                         "Pier":0};
 var availabilityData = [];
-
+var chart_height = 400;
 // seasonal colors
 winter_color = '#4995C2'
 spring_color = '#74AF6E'
@@ -172,7 +172,7 @@ function drawPieChart() {
             text: 'Fish by Season'
         },
         series: [{
-            name: "Uncaught Fish",
+            name: "Sum of Fish/Month",
             data: seasonalData
         }]
     });
@@ -199,7 +199,8 @@ function drawMonthAvailabilityChart() {
             type: 'heatmap',
             marginTop: 40,
             marginBottom: 80,
-            plotBorderWidth: 1
+            plotBorderWidth: 1,
+            height: chart_height,
         },
         title: {
             text: 'Fish Availability by Month'
@@ -252,8 +253,16 @@ function drawLocationChart() {
     for (let fish of Object.keys(missingFish)) {
         locationData.push({name: fish, parent: data[fish]['location'], value: 1});
     }
+    if (num_toggled > 10){
+        chart_height = chart_height + 15
+    }
+    else{
+        chart_height = 400
+    }
     locationChart = Highcharts.chart('location-chart', {
-        series: [{
+        chart: {
+            height: chart_height,
+        },series: [{
             type: "treemap",
             layoutAlgorithm: 'stripes',
             alternateStartingDirection: true,

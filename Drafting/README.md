@@ -1,5 +1,6 @@
 ### Drafting 
 This is where we hope to show the development of our project, showing our processes, improvements, and skills
+[Working Site Here](https://dylannelson.github.io/AnimalCrossingDashboard/)
 
 ### 11/27/2020  
 ![nov27th progress](Sketches/11-27.gif)
@@ -68,3 +69,10 @@ This is where we hope to show the development of our project, showing our proces
 	- issue was cause by scroll wheel appearing/dissapearing and resizing the page
 	- always having scroll wheel visable fixed this smoothly
 
+### 4/5/2021
+- Fixed scaling of graphs.
+  - The last 2 graphs now scale with the input when they have > 10 fish
+- Shortened the info page
+- Fixed hotlinks
+- Dialed down the curved edges
+- Made the text left-aligned with the input box
