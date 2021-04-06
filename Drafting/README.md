@@ -1,6 +1,6 @@
 ### Drafting 
 This is where we hope to show the development of our project, showing our processes, improvements, and skills
-[Working Site Here](https://dylannelson.github.io/AnimalCrossingDashboard/)
+[>>> Working Site <<<](https://dylannelson.github.io/AnimalCrossingDashboard/)
 
 ### 11/27/2020  
 ![nov27th progress](Sketches/11-27.gif)

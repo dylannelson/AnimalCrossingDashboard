@@ -2,7 +2,8 @@
 ## Dynamic Dashboard for Animal Crossing New Horizons
 [Updates and Progress](https://github.com/dylannelson/AnimalCrossingDashboard/blob/main/Drafting/README.md)  
   
-[Working Site Here](https://dylannelson.github.io/AnimalCrossingDashboard/)  
+[>>> Working Site <<<](https://dylannelson.github.io/AnimalCrossingDashboard/)
+    
 ![dec28th progress](Drafting/Sketches/12-28.PNG)
 ### Uses:
 - Tracking the fish you've caught so far, saved locally
@@ -24,7 +25,7 @@ more efficiently
   
 ### Current Goals
 9. More relevant units for first graph  
-10. Better CS/aesthetics
+10. Better CSS/aesthetics
 
   
 #### Stretch Goals:
